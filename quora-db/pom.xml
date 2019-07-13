@@ -11,6 +11,15 @@
 
     <artifactId>quora-db</artifactId>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <postgresql.driver.version>42.2.2</postgresql.driver.version>
@@ -48,6 +57,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <version>1.0-alpha-2</version>
+
                 <executions>
                     <execution>
                         <phase>initialize</phase>
@@ -71,10 +81,8 @@
                     <dependency>
                         <groupId>org.postgresql</groupId>
                         <artifactId>postgresql</artifactId>
-                        <version>${postgresql.driver.version}</version>
+                        <version>42.2.5</version>
                     </dependency>
-
-
                 </dependencies>
 
                 <configuration>
@@ -103,6 +111,7 @@
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>sql-maven-plugin</artifactId>
                         <version>${sql-maven-plugin.version}</version>
+
                         <executions>
                             <execution>
                                 <id>db-setup</id>
