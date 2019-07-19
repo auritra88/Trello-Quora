@@ -1,7 +1,7 @@
 package com.upgrad.quora.service.dao;
 
-import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
+import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.SignUpRestrictedException;
 import org.springframework.stereotype.Repository;
 
@@ -44,6 +44,14 @@ public class UserDao {
         try {
             return entityManager.createNamedQuery("userByUname" , UserEntity.class).setParameter("username" , userName).getSingleResult();
         } catch(NoResultException e) {
+            return null;
+        }
+    }
+
+    public UserEntity getUserByUuid(final String userUuid) {
+        try {
+            return entityManager.createNamedQuery("userByUuid", UserEntity.class).setParameter("uuid", userUuid).getSingleResult();
+        } catch (NoResultException nre) {
             return null;
         }
     }
