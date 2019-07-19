@@ -39,7 +39,7 @@ CONTACTNUMBER        VARCHAR(30)
         {
                 @NamedQuery(name = "userByUuid", query = "select u from UserEntity u where u.uuid = :uuid"),
                 @NamedQuery(name = "userByUname", query = "select u from UserEntity u where u.userName =:username"),
-                @NamedQuery(name = "getAllUsers", query = "SELECT u from UserEntity u")
+                @NamedQuery(name = "getAllUsers", query = "SELECT u from UserEntity u"),
         }
 )
 public class UserEntity implements Serializable {

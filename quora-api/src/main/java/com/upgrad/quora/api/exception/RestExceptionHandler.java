@@ -19,15 +19,22 @@ public class RestExceptionHandler {
         );
     }
 
-    @ExceptionHandler(SignOutRestrictedException.class)
-    public ResponseEntity<ErrorResponse> uploadFailedException(SignOutRestrictedException exc, WebRequest request) {
+//    @ExceptionHandler(SignOutRestrictedException.class)
+//    public ResponseEntity<ErrorResponse> uploadFailedException(SignOutRestrictedException exc, WebRequest request) {
+//        return new ResponseEntity<ErrorResponse>(
+//                new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.UNAUTHORIZED
+//        );
+//    }
+
+    @ExceptionHandler(SignUpRestrictedException.class)
+    public ResponseEntity<ErrorResponse> signupRestrictedException(SignUpRestrictedException exc, WebRequest request) {
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.UNAUTHORIZED
         );
     }
 
-    @ExceptionHandler(SignUpRestrictedException.class)
-    public ResponseEntity<ErrorResponse> signupRestrictedException(SignUpRestrictedException exc, WebRequest request) {
+    @ExceptionHandler(SignOutRestrictedException.class)
+    public ResponseEntity<ErrorResponse> signOutRestrictedException(SignOutRestrictedException exc, WebRequest request) {
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.UNAUTHORIZED
         );
