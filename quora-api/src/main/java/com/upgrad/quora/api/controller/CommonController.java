@@ -18,9 +18,9 @@ public class CommonController {
     private AdminService adminService;
 
     @RequestMapping(method= RequestMethod.GET, path="/userprofile/{userId}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<UserDetailsResponse> userSignup(@PathVariable("userId") final String userUuid, @RequestHeader("authorization") final String authorization) throws UserNotFoundException,AuthorizationFailedException {
+    public ResponseEntity<UserDetailsResponse> userSignup(@PathVariable("userId") final String userId, @RequestHeader("authorization") final String authorization) throws UserNotFoundException,AuthorizationFailedException {
 
-        final UserEntity userEntity = adminService.getUser(userUuid,authorization);
+        final UserEntity userEntity = adminService.getUser(userId,authorization);
         UserDetailsResponse userDetailsResponse = new UserDetailsResponse();
 
         userDetailsResponse.setAboutMe(userEntity.getAboutMe());

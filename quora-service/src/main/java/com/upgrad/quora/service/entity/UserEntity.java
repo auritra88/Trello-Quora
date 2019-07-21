@@ -37,7 +37,8 @@ CONTACTNUMBER        VARCHAR(30)
 @Table(name = "USERS")
 @NamedQueries(
         {
-                @NamedQuery(name = "userByUuid", query = "select u from UserEntity u where u.uuid = :uuid"),
+                @NamedQuery(name = "deleteUserById", query = "delete from UserEntity u where u.id = :ids"),
+                @NamedQuery(name = "userById", query = "select u from UserEntity u where u.id = :id"),
                 @NamedQuery(name = "userByUname", query = "select u from UserEntity u where u.userName =:username"),
                 @NamedQuery(name = "getAllUsers", query = "SELECT u from UserEntity u"),
 //                @NamedQuery(name = "userAuthTokenByAccessToken", query = "SELECT u from UserEntity u"),

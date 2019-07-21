@@ -5,10 +5,7 @@ import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.SignUpRestrictedException;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 @Repository
@@ -48,12 +45,32 @@ public class UserDao {
         }
     }
 
-    public UserEntity getUserByUuid(final String userUuid) {
+    public UserEntity getUserById(final Integer userId) {
         try {
-            return entityManager.createNamedQuery("userByUuid", UserEntity.class).setParameter("uuid", userUuid).getSingleResult();
+            return entityManager.createNamedQuery("userById", UserEntity.class).setParameter("id", userId).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         }
+    }
+
+    public void deleteUserById(final Integer userId) {
+
+        UserEntity userEntity;
+        try {
+
+            entityManager.createNamedQuery("deleteUserById", UserEntity.class)
+                    .setParameter(1, userId)
+                    .executeUpdate();
+
+            //Execute the delete query
+            entityManager.flush();
+
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public UserAuthTokenEntity createAuthToken(final UserAuthTokenEntity userAuthTokenEntity) {
